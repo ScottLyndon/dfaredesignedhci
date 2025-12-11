@@ -35,11 +35,26 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
   // Function to check if a date should be disabled
   const isDateDisabled = (dateToCheck: Date) => {
     const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time to compare only dates
     const maxDate = addDays(today, 90);
     const dayOfWeek = dateToCheck.getDay();
     
     // Disable past dates, Sundays (0), and Saturdays (6)
     return dateToCheck < today || dateToCheck > maxDate || dayOfWeek === 0 || dayOfWeek === 6;
+  };
+
+  // Debug function to see what's happening with date selection
+  const handleDateSelect = (selectedDate: Date | undefined) => {
+    console.log("Date selected:", selectedDate);
+    if (selectedDate) {
+      console.log("Selected date details:", {
+        date: selectedDate,
+        isDisabled: isDateDisabled(selectedDate),
+        dayOfWeek: selectedDate.getDay(),
+        timestamp: selectedDate.getTime()
+      });
+    }
+    setDate(selectedDate);
   };
 
   return (
@@ -58,7 +73,7 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
           <CardContent className="flex justify-center p-4">
             <Calendar
               selected={date}
-              onSelect={setDate}
+              onSelect={handleDateSelect}
               disabled={isDateDisabled}
               className="rounded-md border w-full"
             />
