@@ -32,6 +32,16 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
     }
   };
 
+  // Function to check if a date should be disabled
+  const isDateDisabled = (dateToCheck: Date) => {
+    const today = new Date();
+    const maxDate = addDays(today, 90);
+    const dayOfWeek = dateToCheck.getDay();
+    
+    // Disable past dates, Sundays (0), and Saturdays (6)
+    return dateToCheck < today || dateToCheck > maxDate || dayOfWeek === 0 || dayOfWeek === 6;
+  };
+
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="grid md:grid-cols-2 gap-6">
@@ -48,8 +58,11 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
           <CardContent className="flex justify-center p-4">
             <Calendar
               selected={date}
-              onSelect={setDate}
-              disabled={(date) => date < new Date() || date > addDays(new Date(), 90) || date.getDay() === 0 || date.getDay() === 6}
+              onSelect={(selectedDate) => {
+                console.log("Date selected:", selectedDate);
+                setDate(selectedDate);
+              }}
+              disabled={isDateDisabled}
               className="rounded-md border w-full"
             />
           </CardContent>

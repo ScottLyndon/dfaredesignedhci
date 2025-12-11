@@ -139,7 +139,7 @@ function Calendar({
           defaultClassNames.day_outside
         ),
         day_disabled: cn(
-          "text-muted-foreground opacity-50 cursor-pointer", // Changed from cursor-not-allowed to cursor-pointer
+          "text-muted-foreground opacity-50 cursor-pointer",
           defaultClassNames.day_disabled
         ),
         day_hidden: cn("invisible", defaultClassNames.day_hidden),
