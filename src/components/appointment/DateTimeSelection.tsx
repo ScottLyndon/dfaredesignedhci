@@ -42,20 +42,6 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
     return dateToCheck < today || dateToCheck > maxDate || dayOfWeek === 0 || dayOfWeek === 6;
   };
 
-  // Debug function to see what's happening with date selection
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    console.log("handleDateSelect called with:", selectedDate);
-    if (selectedDate) {
-      console.log("Selected date details:", {
-        date: selectedDate,
-        isDisabled: isDateDisabled(selectedDate),
-        dayOfWeek: selectedDate.getDay(),
-        timestamp: selectedDate.getTime()
-      });
-    }
-    setDate(selectedDate);
-  };
-
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="grid md:grid-cols-2 gap-6">
@@ -72,7 +58,7 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
           <CardContent className="flex justify-center p-4">
             <Calendar
               selected={date}
-              onSelect={handleDateSelect}
+              onSelect={setDate}
               disabled={isDateDisabled}
               className="rounded-md border w-full"
             />
