@@ -358,7 +358,7 @@ export default function SiteSelection({ onNext, initialData }: SiteSelectionProp
                 <SelectTrigger className="h-10">
                   <SelectValue placeholder="- PLEASE SELECT A SITE -" />
                 </SelectTrigger>
-                <SelectContent className="max-h-60 overflow-y-auto">
+                <SelectContent className="max-h-96 overflow-y-auto">
                   {Object.keys(availableSites).map((s) => (
                     <SelectItem key={s} value={s}>
                       {s}
