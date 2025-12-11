@@ -86,7 +86,7 @@ export default function Appointment() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background bg-pattern">
+    <div className="min-h-screen flex flex-col bg-background bg-pattern appointment-page">
       <Header />
       
       <main className="flex-1 container mx-auto py-8 md:py-12 px-4">

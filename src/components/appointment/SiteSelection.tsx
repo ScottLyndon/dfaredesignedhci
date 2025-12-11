@@ -272,11 +272,11 @@ export const OFFICE_DATABASE: Record<string, Record<string, Record<string, Offic
         mapsUrl: "https://www.google.com/maps/search/Robinsons+Place+San+Nicolas+DFA"
       },
       // Palawan
-      "Puerto Princesa (Robinsons Palawan)": {
-        name: "Puerto Princesa",
-        address: "Robinsons Palawan, Puerto Princesa City, Palawan",
+      "Puerto Prinsesa (Robinsons Palawan)": {
+        name: "Puerto Prinsesa",
+        address: "Robinsons Palawan, Puerto Prinsesa City, Palawan",
         contact: "+63-48-434-0000",
-        mapsUrl: "https://www.google.com/maps/search/Robinsons+Palawan+Puerto+Princesa+DFA"
+        mapsUrl: "https://www.google.com/maps/search/Robinsons+Palawan+Puerto+Prinsesa+DFA"
       }
     }
   }
@@ -358,7 +358,7 @@ export default function SiteSelection({ onNext, initialData }: SiteSelectionProp
                 <SelectTrigger className="h-10">
                   <SelectValue placeholder="- PLEASE SELECT A SITE -" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="max-h-60 overflow-y-auto">
                   {Object.keys(availableSites).map((s) => (
                     <SelectItem key={s} value={s}>
                       {s}
@@ -414,7 +414,7 @@ export default function SiteSelection({ onNext, initialData }: SiteSelectionProp
         </AlertDescription>
       </Alert>
 
-      <div className="flex justify-end gap-4">
+      <div className="flex justify-between">
         <Button variant="outline" onClick={() => onNext(null)}>
           Cancel
         </Button>
