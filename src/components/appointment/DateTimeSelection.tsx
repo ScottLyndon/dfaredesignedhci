@@ -3,9 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalendarIcon, Clock } from "lucide-react";
 import { format, addDays } from "date-fns";
-// Import DayPicker directly
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
 
 interface DateTimeSelectionProps {
   onNext: (data: any) => void;
@@ -34,15 +31,11 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
     }
   };
 
-  // Function to check if a date should be disabled
-  const isDateDisabled = (dateToCheck: Date) => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset time to compare only dates
-    const maxDate = addDays(today, 90);
-    const dayOfWeek = dateToCheck.getDay();
-    
-    // Disable past dates, Sundays (0), and Saturdays (6)
-    return dateToCheck < today || dateToCheck > maxDate || dayOfWeek === 0 || dayOfWeek === 6;
+  // Simple test function to see if state updates work
+  const testDateSelect = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    setDate(tomorrow);
   };
 
   return (
@@ -58,14 +51,14 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
               Choose your preferred appointment date.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center p-4">
-            <div className="rounded-md border w-full">
-              <DayPicker
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                disabled={isDateDisabled}
-              />
+          <CardContent className="flex flex-col items-center p-4 gap-4">
+            <div className="text-center">
+              Selected Date: {date ? format(date, "MMMM d, yyyy") : "None"}
+            </div>
+            <Button onClick={testDateSelect}>Test Select Tomorrow</Button>
+            <div className="text-sm text-muted-foreground">
+              If clicking "Test Select Tomorrow" updates the date above, then state management is working.
+              If not, there's a deeper issue with the component.
             </div>
           </CardContent>
         </Card>
