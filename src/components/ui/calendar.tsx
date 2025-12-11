@@ -79,16 +79,16 @@ function Calendar({
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          "h-7 w-7 p-0 aria-disabled:opacity-50",
+          "h-7 w-7 p-0 aria-disabled:opacity-50 z-10 relative",
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          "h-7 w-7 p-0 aria-disabled:opacity-50",
+          "h-7 w-7 p-0 aria-disabled:opacity-50 z-10 relative",
           defaultClassNames.button_next
         ),
         month_caption: cn(
-          "flex items-center justify-center absolute inset-x-0 top-0 py-2",
+          "flex items-center justify-center absolute inset-x-0 top-0 py-2 z-0",
           defaultClassNames.month_caption
         ),
         dropdowns: cn(
@@ -139,7 +139,7 @@ function Calendar({
           defaultClassNames.day_outside
         ),
         day_disabled: cn(
-          "text-muted-foreground opacity-50 cursor-not-allowed",
+          "text-muted-foreground opacity-50 cursor-pointer", // Changed from cursor-not-allowed to cursor-pointer
           defaultClassNames.day_disabled
         ),
         day_hidden: cn("invisible", defaultClassNames.day_hidden),
