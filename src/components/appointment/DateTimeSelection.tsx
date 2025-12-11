@@ -47,7 +47,6 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
           </CardHeader>
           <CardContent className="flex justify-center p-4">
             <Calendar
-              mode="single"
               selected={date}
               onSelect={setDate}
               disabled={(date) => date < new Date() || date > addDays(new Date(), 90) || date.getDay() === 0 || date.getDay() === 6}

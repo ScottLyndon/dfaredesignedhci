@@ -187,6 +187,7 @@ function CalendarDayButton({
   className,
   day,
   modifiers,
+  onClick,
   ...props
 }: React.ComponentProps<"button"> & {
   day: Date;
@@ -200,11 +201,24 @@ function CalendarDayButton({
     outside?: boolean;
     focused?: boolean;
   };
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) {
   const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
     if (modifiers.focused) ref.current?.focus();
   }, [modifiers.focused]);
+
+  // Handle click events properly
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Don't handle clicks on disabled days
+    if (modifiers.disabled) {
+      e.preventDefault();
+      return;
+    }
+    
+    // Call the original onClick handler if provided
+    onClick?.(e);
+  };
 
   return (
     <Button
@@ -226,6 +240,8 @@ function CalendarDayButton({
         defaultClassNames.day_button,
         className
       )}
+      onClick={handleClick}
+      disabled={modifiers.disabled}
       {...props}
     />
   );
