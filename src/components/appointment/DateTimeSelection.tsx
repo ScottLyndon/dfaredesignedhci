@@ -46,12 +46,14 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
             </CardDescription>
           </CardHeader>
           <CardContent className="flex justify-center">
-            <Calendar
-              selected={date}
-              onSelect={setDate}
-              disabled={(date) => date < new Date() || date > addDays(new Date(), 90) || date.getDay() === 0 || date.getDay() === 6}
-              className="rounded-md border"
-            />
+            <div className="w-full">
+              <Calendar
+                selected={date}
+                onSelect={setDate}
+                disabled={(date) => date < new Date() || date > addDays(new Date(), 90) || date.getDay() === 0 || date.getDay() === 6}
+                className="rounded-md border w-full"
+              />
+            </div>
           </CardContent>
         </Card>
 
