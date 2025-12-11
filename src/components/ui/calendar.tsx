@@ -74,17 +74,17 @@ function Calendar({
         month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
         table: "w-full border-collapse",
         nav: cn(
-          "flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between",
+          "flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between px-8",
           defaultClassNames.nav
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          "h-6 w-6 p-0 aria-disabled:opacity-50",
+          "h-6 w-6 p-0 aria-disabled:opacity-50 z-10",
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          "h-6 w-6 p-0 aria-disabled:opacity-50",
+          "h-6 w-6 p-0 aria-disabled:opacity-50 z-10",
           defaultClassNames.button_next
         ),
         month_caption: cn(
