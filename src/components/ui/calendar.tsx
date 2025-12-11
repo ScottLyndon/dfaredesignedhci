@@ -210,9 +210,12 @@ function CalendarDayButton({
 
   // Handle click events properly
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("DayButton clicked:", { day, modifiers, disabled: modifiers.disabled });
+    
     // Don't handle clicks on disabled days
     if (modifiers.disabled) {
       e.preventDefault();
+      console.log("Preventing click on disabled day");
       return;
     }
     
