@@ -74,24 +74,23 @@ function Calendar({
         month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
         table: "w-full border-collapse",
         nav: cn(
-          "flex items-center justify-between w-full absolute top-0 inset-x-0 px-8 py-2 z-10",
+          "flex items-center justify-between w-full absolute top-0 inset-x-0 px-8 py-2",
           defaultClassNames.nav
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          "h-7 w-7 p-0 aria-disabled:opacity-50 relative z-20",
+          "h-7 w-7 p-0 aria-disabled:opacity-50",
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          "h-7 w-7 p-0 aria-disabled:opacity-50 relative z-20",
+          "h-7 w-7 p-0 aria-disabled:opacity-50",
           defaultClassNames.button_next
         ),
         month_caption: cn(
-          "flex items-center justify-center absolute inset-x-0 top-0 py-2 z-0",
+          "flex items-center justify-center absolute inset-x-0 top-0 py-2",
           defaultClassNames.month_caption
         ),
-        caption: "relative", // This ensures the caption is behind the nav buttons
         dropdowns: cn(
           "w-full flex items-center text-sm font-medium justify-center h-7 gap-1.5",
           defaultClassNames.dropdowns
@@ -176,11 +175,6 @@ function Calendar({
             <ChevronDownIcon className="h-4 w-4" {...props} />
           );
         },
-        Caption: (props) => (
-          <div className="flex justify-center items-center absolute inset-x-0 top-0 py-2 z-0">
-            {props.children}
-          </div>
-        ),
         DayButton: CalendarDayButton,
         ...components,
       }}
