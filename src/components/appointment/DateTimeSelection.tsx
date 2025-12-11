@@ -35,7 +35,7 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="grid md:grid-cols-2 gap-6">
-        <Card>
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <CalendarIcon className="h-5 w-5 text-primary" />
@@ -45,19 +45,17 @@ export default function DateTimeSelection({ onNext, onBack, initialData }: DateT
               Choose your preferred appointment date.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex justify-center">
-            <div className="w-full">
-              <Calendar
-                selected={date}
-                onSelect={setDate}
-                disabled={(date) => date < new Date() || date > addDays(new Date(), 90) || date.getDay() === 0 || date.getDay() === 6}
-                className="rounded-md border w-full"
-              />
-            </div>
+          <CardContent className="flex justify-center p-4">
+            <Calendar
+              selected={date}
+              onSelect={setDate}
+              disabled={(date) => date < new Date() || date > addDays(new Date(), 90) || date.getDay() === 0 || date.getDay() === 6}
+              className="rounded-md border w-full"
+            />
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="w-full">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Clock className="h-5 w-5 text-primary" />
